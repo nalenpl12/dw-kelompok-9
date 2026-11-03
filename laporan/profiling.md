@@ -14,10 +14,6 @@ Data profiling dilaksanakan untuk menilai kesiapan data sumber **MySQL `dwo`** s
 | Database sumber | `dwo` |
 | Database target | `dwo_fakta` |
 | Script pemeriksaan | [`profiling.sql`](profiling.sql) |
-| Tanggal dan waktu pemeriksaan | **[Isi berdasarkan `NOW()` dari query]** |
-| Versi MySQL | **[Isi berdasarkan `VERSION()`]** |
-| Pelaksana | **[Nama anggota / NPM]** |
-| Bukti hasil eksekusi | **[Tautan screenshot atau lampiran hasil SQL]** |
 
 > **Status hasil:** angka dan temuan di bawah merupakan tempat pengisian, **bukan** klaim hasil eksekusi. Masukkan nilai aktual dari database sebelum dokumen dikumpulkan.
 
@@ -47,11 +43,11 @@ Masukkan output dari Bagian 02 `profiling.sql`.
 
 | Tabel | Jumlah baris aktual |
 |---|---:|
-| `production_productinventory` | **[isi]** |
-| `production_product` | **[isi]** |
-| `production_productsubcategory` | **[isi]** |
-| `production_productcategory` | **[isi]** |
-| `production_location` | **[isi]** |
+| `production_productinventory` | 1069 |
+| `production_product` | 504 |
+| `production_productsubcategory` | 37 |
+| `production_productcategory` | 4 |
+| `production_location` | 14 |
 
 **Interpretasi:** **[Uraikan perbandingan ukuran tabel dan relevansinya terhadap sumber tabel fakta.]**
 
@@ -75,16 +71,16 @@ Masukkan output dari Bagian 04 `profiling.sql`. Jika suatu nilai tidak tersedia,
 
 | Tabel | Kolom diperiksa | Jumlah `NULL` | Tindak lanjut |
 |---|---|---:|---|
-| ProductInventory | `productid` | **[isi]** | Periksa identitas produk |
-| ProductInventory | `locationid` | **[isi]** | Periksa identitas lokasi |
-| ProductInventory | `quantity` | **[isi]** | Evaluasi kelayakan ukuran stok |
-| ProductInventory | `modifieddate` | **[isi]** | Catat kualitas metadata sumber |
-| Product | `productsubcategoryid` | **[isi]** | Evaluasi kategori belum terklasifikasi |
-| Product | `standardcost` | **[isi]** | Pengaruh ke Q5 / `stock_value` |
-| Product | `reorderpoint` | **[isi]** | Pengaruh ke Q4 |
-| ProductSubcategory | `productcategoryid` | **[isi]** | Periksa klasifikasi kategori |
-| ProductCategory | `name` | **[isi]** | Periksa nama kategori |
-| Location | `locationid`, `name` | **[isi masing-masing]** | Validasi dimensi lokasi |
+| ProductInventory | `productid` | 0 | Periksa identitas produk |
+| ProductInventory | `locationid` | 0 | Periksa identitas lokasi |
+| ProductInventory | `quantity` | 0 | Evaluasi kelayakan ukuran stok |
+| ProductInventory | `modifieddate` | 0 | Catat kualitas metadata sumber |
+| Product | `productsubcategoryid` | 209 | Evaluasi kategori belum terklasifikasi |
+| Product | `standardcost` | 0 | Pengaruh ke Q5 / `stock_value` |
+| Product | `reorderpoint` | 0 | Pengaruh ke Q4 |
+| ProductSubcategory | `productcategoryid` | 0 | Periksa klasifikasi kategori |
+| ProductCategory | `name` | 0 | Periksa nama kategori |
+| Location | `locationid`, `name` | 0 | Validasi dimensi lokasi |
 
 **Interpretasi dan keputusan pembersihan:** **[Isi berdasarkan temuan aktual; bedakan NULL yang memang diperbolehkan dari yang merusak analisis.]**
 
@@ -153,10 +149,3 @@ Bila `standardcost` bernilai `NULL`, hasil perkalian juga `NULL`; `SUM()` dapat 
 **Keputusan tindak lanjut:** **[Jelaskan apakah data dapat dimuat langsung, perlu pengelompokan produk–lokasi, perlu pemetaan kategori, atau perlu penanganan NULL.]**
 
 **Kriteria lanjut ke ETL:** kunci produk dan lokasi valid, grain telah dipastikan, metode snapshot konsisten, dan baseline kuantitas/nilai stok terdokumentasi. Daftar risiko terdapat pada [`risiko.md`](risiko.md) dan modelnya pada [`grain.md`](grain.md).
-
-## 8. Lampiran bukti
-
-- **[Screenshot/ekspor output query jumlah baris]**
-- **[Screenshot/ekspor output rentang tanggal dan NULL]**
-- **[Screenshot/ekspor hasil duplikasi dan integritas referensi]**
-- **[Screenshot/ekspor baseline quantity dan stock value]**
