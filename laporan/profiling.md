@@ -70,52 +70,6 @@ Masukkan output dari Bagian 04 `profiling.sql`. Jika suatu nilai tidak tersedia,
 
 **Interpretasi dan keputusan pembersihan:** **[Isi berdasarkan temuan aktual; bedakan NULL yang memang diperbolehkan dari yang merusak analisis.]**
 
-### 5.4 Keunikan grain dan validitas quantity
-
-Masukkan output dari Bagian 05–06 `profiling.sql`.
-
-| Pengujian | Hasil aktual | Kriteria / tindak lanjut |
-|---|---:|---|
-| Jumlah produk dengan stok | **[isi]** | Informasi cakupan Q2 dan Q4 |
-| Jumlah lokasi dengan stok | **[isi]** | Informasi cakupan Q3 |
-| Total `SUM(quantity)` sumber | **[isi]** | Baseline rekonsiliasi |
-| Quantity negatif | **[isi]** | Investigasi jika ditemukan |
-| Quantity nol | **[isi]** | Teliti apakah sah secara bisnis |
-| Kombinasi `productid, locationid` berulang | **[isi]** | **Harus ditangani** sebelum memuat grain produk–lokasi |
-
-**Keputusan grain:** satu baris fakta = satu **tanggal snapshot × produk × lokasi**. Jika sumber memiliki beberapa baris per kombinasi produk–lokasi, telusuri penyebabnya; apabila benar-benar merupakan detail bin/rak, agregasikan `SUM(quantity)` ke tingkat produk–lokasi sebelum load, dan hitung nilai stok dengan biaya standar yang konsisten. Jangan langsung memasukkan baris duplikat ke fakta yang memiliki `UNIQUE(date_key, product_key, location_key)`.
-
-### 5.5 Integritas relasi dan kelengkapan kategori
-
-Masukkan output dari Bagian 07–08 `profiling.sql`.
-
-| Pengujian | Hasil aktual | Dampak |
-|---|---:|---|
-| Baris inventory tanpa pasangan produk | **[isi]** | Risiko tidak termuat saat `INNER JOIN` |
-| Baris inventory tanpa pasangan lokasi | **[isi]** | Risiko tidak termuat saat `INNER JOIN` |
-| Produk tanpa subkategori | **[isi]** | Kategori belum dapat ditentukan |
-| Referensi subkategori/kategori tidak ditemukan | **[isi]** | Kategori dan Q1/Q5 tidak lengkap |
-
-Jika ditemukan masalah, dokumentasikan jumlah baris yang dikecualikan dan aturan penanganannya sebelum ETL. Jangan membuang baris bermasalah tanpa catatan.
-
-### 5.6 Baseline rekonsiliasi ukuran
-
-Masukkan output dari Bagian 09 `profiling.sql`.
-
-| Ukuran | Hasil pada data sumber | Hasil pada fakta (snapshot sama) | Selisih |
-|---|---:|---:|---:|
-| Jumlah baris pada grain yang disepakati | **[isi]** | **[isi]** | **[isi]** |
-| `SUM(quantity)` | **[isi]** | **[isi]** | **[isi]** |
-| `SUM(quantity × standardcost)` dibanding `SUM(stock_value)` | **[isi]** | **[isi]** | **[isi]** |
-
-Perhatikan: jika duplikasi sumber **diagregasikan** ke produk–lokasi, jumlah baris sumber mentah tidak harus sama dengan jumlah baris fakta. Bandingkan jumlah baris setelah pengelompokan pada grain yang sama. Rekonsiliasi `quantity` dan `stock_value` harus menggunakan **ekstraksi sumber yang sama**, bukan tabel sumber yang mungkin sudah berubah setelah snapshot dimuat.
-
-Rumus estimasi nilai stok:
-
-`stock_value = quantity × standardcost`
-
-Bila `standardcost` bernilai `NULL`, hasil perkalian juga `NULL`; `SUM()` dapat mengabaikan baris tersebut. Baris yang gagal dinilai harus dicatat agar total Q5 tidak tampak lengkap secara keliru.
-
 ## 6. Kaitan pemeriksaan dengan lima pertanyaan bisnis
 
 | Pertanyaan | Kebutuhan kualitas data | Pengujian pendukung |
