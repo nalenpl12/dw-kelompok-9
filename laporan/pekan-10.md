@@ -112,4 +112,3 @@ Risiko lengkap serta rencana mitigasinya ada pada [`risiko.md`](risiko.md).
 - [Risiko awal](risiko.md)
 - [Query profiling MySQL](profiling.sql)
 - [Hasil profiling](profiling.md)
-- **[Tautan gambar Star Schema / screenshot phpMyAdmin / rekaman hasil pengujian]**
