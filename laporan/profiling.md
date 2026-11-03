@@ -51,21 +51,7 @@ Masukkan output dari Bagian 02 `profiling.sql`.
 
 **Interpretasi:** **[Uraikan perbandingan ukuran tabel dan relevansinya terhadap sumber tabel fakta.]**
 
-### 5.2 Rentang tanggal dan tanggal snapshot
-
-Masukkan output dari Bagian 03 `profiling.sql`.
-
-| Metrik | Hasil |
-|---|---|
-| `MIN(modifieddate)` pada `production_productinventory` | **[isi]** |
-| `MAX(modifieddate)` pada `production_productinventory` | **[isi]** |
-| Jumlah `NULL` pada `modifieddate` | **[isi]** |
-| Tanggal snapshot yang direncanakan/ditetapkan saat load DW | **[YYYY-MM-DD]** |
-| Waktu/cut-off ekstraksi (jika dicatat) | **[isi, zona waktu]** |
-
-**Interpretasi:** rentang modifikasi record tidak dapat dipakai untuk menyimpulkan histori jumlah stok. Semua pertanyaan bisnis harus menggunakan **satu `date_key` snapshot yang sama**.
-
-### 5.3 Nilai `NULL`
+### 5.2 Nilai `NULL`
 
 Masukkan output dari Bagian 04 `profiling.sql`. Jika suatu nilai tidak tersedia, jangan isi dengan nol tanpa menjalankan query.
 
