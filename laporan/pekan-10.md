@@ -6,16 +6,13 @@
 |---|---|
 | Nama proyek | Data Warehouse Pengelolaan Persediaan AdventureWorks |
 | Pekan | 10 |
-| Periode kegiatan | **[Tanggal mulai] s.d. [Tanggal selesai]** |
-| Kelompok | **[Nama/nomor kelompok]** |
-| Anggota dan NPM | **[Isi seluruh anggota]** |
-| Pembimbing/dosen | **[Nama dosen]** |
+| Pembimbing/dosen | Mohamad Irwan Afandi, ST, M.Sc. |
 | Database sumber | MySQL `dwo` |
 | Database tujuan | MySQL `dwo_fakta` |
 
 ## 2. Ringkasan kegiatan
 
-Pada pekan ke-10, kegiatan proyek difokuskan pada penyelarasan kebutuhan bisnis, pemeriksaan karakteristik data sumber, dan dokumentasi rancangan dimensional untuk proses **Inventory Snapshot**. Cakupan analisis adalah kondisi persediaan produk pada satu snapshot yang sama, **bukan** transaksi keluar-masuk barang. Lima pertanyaan bisnis digunakan sebagai dasar penentuan ukuran dan dimensi, yakni stok per kategori, stok tertinggi/terendah per produk, stok per lokasi, produk di bawah *reorder point*, dan estimasi nilai stok berdasarkan kategori dan lokasi.
+Pada pekan ke-10, kegiatan proyek difokuskan pada penyelarasan kebutuhan bisnis, pemeriksaan karakteristik data sumber, dan dokumentasi rancangan dimensional untuk proses Inventory Snapshot. Cakupan analisis adalah kondisi persediaan produk pada satu snapshot yang sama, bukan transaksi keluar-masuk barang. Lima pertanyaan bisnis digunakan sebagai dasar penentuan ukuran dan dimensi, yakni stok per kategori, stok tertinggi/terendah per produk, stok per lokasi, produk di bawah *reorder point*, dan estimasi nilai stok berdasarkan kategori dan lokasi.
 
 Rancangan menggunakan **satu tabel fakta** `fact_inventory_snapshot` serta **tiga dimensi** `dim_waktu`, `dim_produk`, dan `dim_lokasi`. Sumber utama adalah `dwo.production_productinventory` yang diperkaya dengan data produk, subkategori, kategori, dan lokasi. Tahap profiling menggunakan query MySQL yang terdokumentasi pada [`profiling.sql`](profiling.sql); hasil aktualnya dicatat pada [`profiling.md`](profiling.md).
 
@@ -25,19 +22,19 @@ Rancangan menggunakan **satu tabel fakta** `fact_inventory_snapshot` serta **tig
 
 | No. | Target/aktivitas | Luaran yang ditargetkan | Status aktual |
 |---|---|---|---|
-| 1 | Finalisasi 5 pertanyaan bisnis terukur | [`pertanyaan-bisnis.md`](pertanyaan-bisnis.md) | **[Verifikasi: selesai/belum]** |
-| 2 | Profiling data sumber MySQL | [`profiling.sql`](profiling.sql) dan tabel hasil pada [`profiling.md`](profiling.md) | **[Isi]** |
-| 3 | Menetapkan grain tabel fakta | [`grain.md`](grain.md) | **[Isi]** |
-| 4 | Menyusun Star Schema v1 (1 fakta + 3 dimensi) | Gambar Star Schema dan penjelasannya | **[Isi]** |
-| 5 | Menentukan Bus Matrix dan calon conformed dimensions | [`bus-matrix.md`](bus-matrix.md) | **[Isi]** |
-| 6 | Menyusun risiko awal dan mitigasinya | [`risiko.md`](risiko.md) | **[Isi]** |
-| 7 | Memastikan struktur tabel di database target selaras dengan dokumen | Pemeriksaan `SHOW TABLES FROM dwo_fakta` dan struktur kolom | **[Isi]** |
+| 1 | Finalisasi 5 pertanyaan bisnis terukur | [`pertanyaan-bisnis.md`](pertanyaan-bisnis.md) | selesai |
+| 2 | Profiling data sumber MySQL | [`profiling.sql`](profiling.sql) dan tabel hasil pada [`profiling.md`](profiling.md) | selesai |
+| 3 | Menetapkan grain tabel fakta | [`grain.md`](grain.md) | selesai |
+| 4 | Menyusun Star Schema v1 (1 fakta + 3 dimensi) | Gambar Star Schema dan penjelasannya | selesai |
+| 5 | Menentukan Bus Matrix dan calon conformed dimensions | [`bus-matrix.md`](bus-matrix.md) | selesai |
+| 6 | Menyusun risiko awal dan mitigasinya | [`risiko.md`](risiko.md) | selesai |
+| 7 | Memastikan struktur tabel di database target selaras dengan dokumen | Pemeriksaan `SHOW TABLES FROM dwo_fakta` dan struktur kolom | selesai |
 
 ## 4. Hasil perancangan
 
 ### 4.1 Proses bisnis dan grain
 
-Proses yang dimodelkan adalah posisi stok persediaan dalam satu snapshot. **Grain statement:** satu baris pada `fact_inventory_snapshot` merepresentasikan stok **satu produk pada satu lokasi dalam satu tanggal snapshot**. Kunci logis grain: `(date_key, product_key, location_key)`.
+Proses yang dimodelkan adalah posisi stok persediaan dalam satu snapshot. Grain statement: satu baris pada `fact_inventory_snapshot` merepresentasikan stok **satu produk pada satu lokasi dalam satu tanggal snapshot**. Kunci logis grain: `(date_key, product_key, location_key)`.
 
 ### 4.2 Struktur Star Schema v1
 
@@ -116,6 +113,3 @@ Risiko lengkap serta rencana mitigasinya ada pada [`risiko.md`](risiko.md).
 - [Query profiling MySQL](profiling.sql)
 - [Hasil profiling](profiling.md)
 - **[Tautan gambar Star Schema / screenshot phpMyAdmin / rekaman hasil pengujian]**
-
-**Disusun oleh:** **[Nama anggota/kelompok]**  
-**Tanggal penyusunan:** **[YYYY-MM-DD]**
