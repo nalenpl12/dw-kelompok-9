@@ -17,7 +17,7 @@ Pipeline ETL dibangun secara modular di dalam folder `etl/` dengan alur bertahap
 5. **`t10_fact_inventory.ktr`**: Melakukan *lookup* berantai terhadap `dim_tanggal`, `dim_produk` (berdasarkan kecocokan `produk_id` dan rentang `date_from <= tanggal_transaksi <= date_to`), `dim_kategori`, `dim_lokasi`, dan `dim_rak`, kemudian menghitung metrik `nilai_stok = quantity_stok * unit_cost` untuk dimuat ke `fact_inventory`.
 6. **`job_utama.kjb`**: Mengorkestrasi seluruh transformasi di atas secara berurutan dari `START` hingga `Success`.
 
-![Kanvas Job Utama Pentaho Spoon](docs/job_utama_spoon.png)
+![Kanvas Job Utama Pentaho Spoon](/docs/job_utama_spoon.png)
 
 ---
 
