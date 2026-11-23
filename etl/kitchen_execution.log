@@ -1,0 +1,91 @@
+DEBUG: Using PENTAHO_JAVA_HOME
+DEBUG: _PENTAHO_JAVA_HOME=C:\Program Files\Java\jre1.8.0_503
+DEBUG: _PENTAHO_JAVA=C:\Program Files\Java\jre1.8.0_503\bin\java.exe
+
+C:\data-integration>"C:\Program Files\Java\jre1.8.0_503\bin\java.exe"   "-Xms1024m" "-Xmx2048m" "-Djava.library.path=libswt\win64;/bin" "-Djava.endorsed.dirs=C:\Program Files\Java\jre1.8.0_503\jre\lib\endorsed;C:\Program Files\Java\jre1.8.0_503\lib\endorsed;C:\data-integration\system\karaf\lib\endorsed"  "-DKETTLE_HOME=" "-DKETTLE_REPOSITORY=" "-DKETTLE_USER=" "-DKETTLE_PASSWORD=" "-DKETTLE_PLUGIN_PACKAGES=" "-DKETTLE_LOG_SIZE_LIMIT=" "-DKETTLE_JNDI_ROOT=" -jar launcher\launcher.jar -lib ..\libswt\win64  -main org.pentaho.di.kitchen.Kitchen -initialDir "C:\data-integration"\ /file:"D:\Kuliah\Semester 7\Data Warehouse\dw-kelompok-9\etl\job_utama.kjb" /level:Basic 
+2026/11/24 00:54:34 - Kitchen - Logging is at level : Basic
+2026/11/24 00:54:34 - Kitchen - Start of run.
+2026/11/24 00:54:36 - job_utama - Start of job execution
+2026/11/24 00:54:36 - job_utama - Starting entry [Transformation]
+2026/11/24 00:54:36 - Transformation - Using run configuration [Pentaho local]
+2026/11/24 00:54:36 - t01_ekstrak - Dispatching started for transformation [t01_ekstrak]
+2026/11/24 00:54:36 - output stg_product_cost_history.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:36 - output stg_product_inventory.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:36 - output stg_product.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:36 - output stg_product_subcategory.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:36 - Output stg_product_category.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:36 - output stg_location.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:36 - Input Category.0 - Finished reading query, closing connection
+2026/11/24 00:54:36 - Input Location.0 - Finished reading query, closing connection
+2026/11/24 00:54:36 - Input Subcategory.0 - Finished reading query, closing connection
+2026/11/24 00:54:36 - Input Subcategory.0 - Finished processing (I=37, O=0, R=0, W=37, U=0, E=0)
+2026/11/24 00:54:36 - Input Category.0 - Finished processing (I=4, O=0, R=0, W=4, U=0, E=0)
+2026/11/24 00:54:36 - Input Location.0 - Finished processing (I=14, O=0, R=0, W=14, U=0, E=0)
+2026/11/24 00:54:36 - Input Product.0 - Finished reading query, closing connection
+2026/11/24 00:54:36 - Output stg_product_category.0 - Finished processing (I=0, O=4, R=4, W=4, U=0, E=0)
+2026/11/24 00:54:36 - Input Product.0 - Finished processing (I=504, O=0, R=0, W=504, U=0, E=0)
+2026/11/24 00:54:36 - Input Cost History.0 - Finished reading query, closing connection
+2026/11/24 00:54:36 - output stg_location.0 - Finished processing (I=0, O=14, R=14, W=14, U=0, E=0)
+2026/11/24 00:54:36 - Input Cost History.0 - Finished processing (I=395, O=0, R=0, W=395, U=0, E=0)
+2026/11/24 00:54:36 - output stg_product_subcategory.0 - Finished processing (I=0, O=37, R=37, W=37, U=0, E=0)
+2026/11/24 00:54:36 - Input Inventory.0 - Finished reading query, closing connection
+2026/11/24 00:54:36 - Input Inventory.0 - Finished processing (I=1069, O=0, R=0, W=1069, U=0, E=0)
+2026/11/24 00:54:36 - output stg_product_cost_history.0 - Finished processing (I=0, O=395, R=395, W=395, U=0, E=0)
+2026/11/24 00:54:36 - output stg_product.0 - Finished processing (I=0, O=504, R=504, W=504, U=0, E=0)
+2026/11/24 00:54:36 - output stg_product_inventory.0 - Finished processing (I=0, O=1069, R=1069, W=1069, U=0, E=0)
+2026/11/24 00:54:36 - job_utama - Starting entry [SQL]
+2026/11/24 00:54:36 - job_utama - Starting entry [Transformation 2]
+2026/11/24 00:54:36 - Transformation 2 - Using run configuration [Pentaho local]
+2026/11/24 00:54:36 - t02_dim_lokasi - Dispatching started for transformation [t02_dim_lokasi]
+2026/11/24 00:54:36 - Output dim_lokasi.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:36 - Input Dim Lokasi.0 - Finished reading query, closing connection
+2026/11/24 00:54:36 - Input Dim Lokasi.0 - Finished processing (I=14, O=0, R=0, W=14, U=0, E=0)
+2026/11/24 00:54:36 - Output dim_lokasi.0 - Finished processing (I=0, O=14, R=14, W=14, U=0, E=0)
+2026/11/24 00:54:36 - job_utama - Starting entry [Transformation 3]
+2026/11/24 00:54:36 - Transformation 3 - Using run configuration [Pentaho local]
+2026/11/24 00:54:36 - t03_dim_kategori - Dispatching started for transformation [t03_dim_kategori]
+2026/11/24 00:54:36 - Output Dim Kategori.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:36 - Input Dim Kategori.0 - Finished reading query, closing connection
+2026/11/24 00:54:36 - Input Dim Kategori.0 - Finished processing (I=38, O=0, R=0, W=38, U=0, E=0)
+2026/11/24 00:54:36 - Output Dim Kategori.0 - Finished processing (I=0, O=38, R=38, W=38, U=0, E=0)
+2026/11/24 00:54:36 - job_utama - Starting entry [Transformation 4]
+2026/11/24 00:54:36 - Transformation 4 - Using run configuration [Pentaho local]
+2026/11/24 00:54:36 - t04_dim_rak - Dispatching started for transformation [t04_dim_rak]
+2026/11/24 00:54:36 - output Dim Rak.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:36 - Input Dim Rak.0 - Finished reading query, closing connection
+2026/11/24 00:54:36 - Input Dim Rak.0 - Finished processing (I=441, O=0, R=0, W=441, U=0, E=0)
+2026/11/24 00:54:37 - output Dim Rak.0 - Finished processing (I=0, O=441, R=441, W=441, U=0, E=0)
+2026/11/24 00:54:37 - job_utama - Starting entry [Transformation 5]
+2026/11/24 00:54:37 - Transformation 5 - Using run configuration [Pentaho local]
+2026/11/24 00:54:37 - t05_dim_produk - Dispatching started for transformation [t05_dim_produk]
+2026/11/24 00:54:37 - output Dim Produk.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:37 - Input Dim Produk.0 - Finished reading query, closing connection
+2026/11/24 00:54:37 - Input Dim Produk.0 - Finished processing (I=606, O=0, R=0, W=606, U=0, E=0)
+2026/11/24 00:54:37 - output Dim Produk.0 - Finished processing (I=0, O=606, R=606, W=606, U=0, E=0)
+2026/11/24 00:54:37 - job_utama - Starting entry [Transformation 6]
+2026/11/24 00:54:37 - Transformation 6 - Using run configuration [Pentaho local]
+2026/11/24 00:54:37 - t10_fact_inventory - Dispatching started for transformation [t10_fact_inventory]
+2026/11/24 00:54:37 - Table output.0 - Connected to database [dw] (commit=1000)
+2026/11/24 00:54:37 - Input Staging Inventory.0 - Finished reading query, closing connection
+2026/11/24 00:54:37 - Input Staging Inventory.0 - Finished processing (I=1069, O=0, R=0, W=1069, U=0, E=0)
+2026/11/24 00:54:37 - Lookup dim_tanggal.0 - Finished processing (I=23, O=0, R=1069, W=1069, U=0, E=0)
+2026/11/24 00:54:37 - Lookup dim_produk.0 - Finished processing (I=1069, O=0, R=1069, W=1069, U=0, E=0)
+2026/11/24 00:54:37 - Lookup dim_kategori.0 - Finished processing (I=37, O=0, R=1069, W=1069, U=0, E=0)
+2026/11/24 00:54:37 - Lookup dim_lokasi.0 - Finished processing (I=14, O=0, R=1069, W=1069, U=0, E=0)
+2026/11/24 00:54:37 - Lookup dim_rak.0 - Finished processing (I=441, O=0, R=1069, W=1069, U=0, E=0)
+2026/11/24 00:54:37 - Calculator.0 - Finished processing (I=0, O=0, R=1069, W=1069, U=0, E=0)
+2026/11/24 00:54:37 - Select values.0 - Finished processing (I=0, O=0, R=1069, W=1069, U=0, E=0)
+2026/11/24 00:54:37 - Table output.0 - Finished processing (I=0, O=1069, R=1069, W=1069, U=0, E=0)
+2026/11/24 00:54:37 - job_utama - Starting entry [Success]
+2026/11/24 00:54:37 - job_utama - Finished job entry [Success] (result=[true])
+2026/11/24 00:54:37 - job_utama - Finished job entry [Transformation 6] (result=[true])
+2026/11/24 00:54:37 - job_utama - Finished job entry [Transformation 5] (result=[true])
+2026/11/24 00:54:37 - job_utama - Finished job entry [Transformation 4] (result=[true])
+2026/11/24 00:54:37 - job_utama - Finished job entry [Transformation 3] (result=[true])
+2026/11/24 00:54:37 - job_utama - Finished job entry [Transformation 2] (result=[true])
+2026/11/24 00:54:37 - job_utama - Finished job entry [SQL] (result=[true])
+2026/11/24 00:54:37 - job_utama - Finished job entry [Transformation] (result=[true])
+2026/11/24 00:54:37 - job_utama - Job execution finished
+2026/11/24 00:54:37 - Kitchen - Finished!
+2026/11/24 00:54:37 - Kitchen - Start=2026/11/24 00:54:36.098, Stop=2026/11/24 00:54:37.823
+2026/11/24 00:54:37 - Kitchen - Processing ended after 1 seconds.
